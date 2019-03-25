@@ -23,3 +23,5 @@ print(myDi.items())
 print(myDi.get('lu',"ka"))
 
 print(myDi.get('k',"nie ma"))
+
+print("my cat nr is %2.4f"%(myDi["ka"]))
