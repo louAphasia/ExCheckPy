@@ -5,7 +5,7 @@ from functools import reduce
 def silnia(n):
     result=1
     for n in range(2,n+1):
-        result+=n
+        result*=n
     return result
 
 def silnia1(k):
