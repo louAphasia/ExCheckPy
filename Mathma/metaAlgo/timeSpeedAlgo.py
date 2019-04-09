@@ -2,12 +2,12 @@ import time
 
 
 def sumn2(n):
-    start = time.time()
+    start = time.perf_counter_ns()
 
     sum = 0
     for i in range(1, n + 1):
         sum = sum+1
-    end = time.time()
+    end = time.perf_counter_ns()
     return sum,end-start
 
 for x in range(5):
@@ -17,7 +17,7 @@ for x in range(5):
 # jak obliczac bez umieszczenia w srodku tylko z return
 def sumn3(n):
     start=time.time()
-    return (n*(n+1))/2, time.time()-start
+    return (n*(n+1))/2, time.perf_counter_ns()-start
 
 for x in range(5):
     print("sumn3 %d i sek %10.99f " % sumn3(10000))
