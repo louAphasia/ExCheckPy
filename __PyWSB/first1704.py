@@ -5,6 +5,9 @@ def liniowa(x):
 assert liniowa(0)==2,"funkcja powinna zwrocic 2"
 
 
+lista=[1,2,3,4,5,6]
+print(lista[0:])
+
 lista=[]
 moja_lista=[1,2,3,'ala']
 moja_lista.append(99)
@@ -19,6 +22,7 @@ print(wlkn,len(wlkn))
 
 def prawda():
     return True
+
 def concat(n,m):
    w=n+m
    return w

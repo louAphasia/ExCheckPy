@@ -25,3 +25,7 @@ print(myDi.get('lu',"ka"))
 print(myDi.get('k',"nie ma"))
 
 print("my cat nr is %2.4f"%(myDi["ka"]))
+
+#pobieranie podzbioru slownika warunek
+p2={key:value for key,value in myDi.items() if value<1000}
+print(p2)

@@ -36,3 +36,5 @@ silnialr=lambda n:1 if n<1 else n*silnialr(n-1)
 
 silniali=lambda n:1 if n<1 else \
     reduce(lambda x,y: x*y, range(1,n+1))
+
+
