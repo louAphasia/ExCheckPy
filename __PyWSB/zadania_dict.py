@@ -1,5 +1,6 @@
 def ship(s):
-  dict={'b': "BattleShip", 'B':"Battleship", 'c':"Cruiser", 'C':"Cruiser"}
+  dict={'b': "BattleShip", 'B':"BattleShip", 'c':"Cruiser", 'C':"Cruiser"}
+
   for  i in dict.keys():     #for i in dict.keys():
     if i == s:                            # if i ==s:
       return dict[i]                      # return dict[i]  / dict.get(i)
