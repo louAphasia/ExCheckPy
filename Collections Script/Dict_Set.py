@@ -29,3 +29,7 @@ print("my cat nr is %2.4f"%(myDi["ka"]))
 #pobieranie podzbioru slownika warunek
 p2={key:value for key,value in myDi.items() if value<1000}
 print(p2)
+
+D={'a': 1, 'c': 3, 'b': 2}
+for k in sorted(D):
+    print(k, D[k], end=' ')

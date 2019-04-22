@@ -1,8 +1,27 @@
 s="abbbcccsss"
 
+
+
+
+
+
+
+ss=set(s)
+print(ss)
+k=list(ss)
+print(k)
+
+
+
+
+
 print(chr(97))
 print(ord('a'))
 
+print(ord('a'))
+print(chr(97))
+
+print(bool(None))
 
 def dec_to_bin(x):
     return int(bin(x)[2:])
