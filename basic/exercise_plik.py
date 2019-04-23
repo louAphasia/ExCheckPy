@@ -5,3 +5,5 @@ def fu(*ul):
 
 
 fu("los","bos","wols")
+
+

@@ -35,7 +35,7 @@ def slowa(x):
     if x=='':
         return 0
     n=x.lower()
-    s = re.split(r'[\s\W\-\n\.\,)]+', n)
+    s = re.split(r'[\s\W\-\n\.\,]+', n)
     if '' in s:
        s.remove('')
 
