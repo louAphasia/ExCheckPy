@@ -31,7 +31,7 @@ print('''
 ''')
 import re
 
-def slowa(x):
+'''def slowa(x):
     if x=='':
         return 0
     n=x.lower()
@@ -43,7 +43,31 @@ def slowa(x):
     count =len(z)
 
     return count
+'''
 
+def rozdziel(napis):
+    result =[]
+    slowo=''
+    for znak in napis:
+        if znak.isalpha():
+            slowo=slowo+znak
+        else:
+            result.append(slowo)
+            slowo=''
+    if slowo!='':
+        result.append(slowo)
+    return result
+
+def slowa(napis):
+    listaslow=rozdziel(napis.lower() )  #(.split('')  #strip z konca i poczatku napisu usuwa
+
+    slowa=set(listaslow)
+    liczba_slow=len(slowa)
+    if '' in slowa:
+        liczba_slow-=1
+
+
+    return liczba_slow
 
 
 
