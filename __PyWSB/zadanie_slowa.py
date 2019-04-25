@@ -50,17 +50,20 @@ def rozdziel(napis):
     slowo=''
     for znak in napis:
         if znak.isalpha():
+            print("po alpha",slowo)
             slowo=slowo+znak
         else:
             result.append(slowo)
             slowo=''
+            print("po else",result, "slowo po else", slowo)
     if slowo!='':
         result.append(slowo)
+        print("po if",result)
     return result
 
 def slowa(napis):
     listaslow=rozdziel(napis.lower() )  #(.split('')  #strip z konca i poczatku napisu usuwa
-
+    print("w słowa", listaslow)
     slowa=set(listaslow)
     liczba_slow=len(slowa)
     if '' in slowa:
@@ -81,7 +84,7 @@ print('Sprawdzenie poprawności rozwiązania... Test 2/11...')
 liczba_slow = slowa('Kot')
 assert liczba_slow == 1, 'Napis "Kot", zawiera 1 słowo, Twoja funkcja zwróciła wartość {}.'.format(liczba_slow)
 print('Sprawdzenie poprawności rozwiązania... Test 3/11...')
-liczba_slow = slowa('Ala Ala')
+liczba_slow = slowa('Ala.   Ala')
 assert liczba_slow == 1, 'Napis "Ala Ala", zawiera 1 słowo, Twoja funkcja zwróciła wartość {}.'.format(liczba_slow)
 print('Sprawdzenie poprawności rozwiązania... Test 4/11...')
 liczba_slow = slowa('Ala ala')
@@ -104,13 +107,13 @@ assert liczba_slow == 3, 'Napis "Ala ma kota.Ala ma kota.", zawiera 3 różne s�
 print('Sprawdzenie poprawności rozwiązania... Test 10/11...')
 liczba_slow = slowa('Wojewodztwo kujawsko-pomorskie.')
 assert liczba_slow == 3, 'Napis "Wojewodztwo kujawsko-pomorskie.", zawiera 3 różne słowa, Twoja funkcja zwróciła wartość {}.'.format(liczba_slow)
-print('Sprawdzenie poprawności rozwiązania... Test 11/11...')
+'''print('Sprawdzenie poprawności rozwiązania... Test 11/11...')
 tekst = '''
-Biała dziura - hipotetyczne przeciwieństwo czarnej dziury. Według teorii biała dziura
+'''Biała dziura - hipotetyczne przeciwieństwo czarnej dziury. Według teorii biała dziura
 miałaby być obszarem, gdzie zarówno energia, jak i materia wypływają z osobliwości.
-Dotychczasowe badania nie potwierdziły istnienia białych dziur.'''
+Dotychczasowe badania nie potwierdziły istnienia białych dziur.''''''
 ''''''
 liczba_slow = slowa(tekst)
 assert liczba_slow == 27, 'Napis "{}", zawiera 27 różnych słów, Twoja funkcja zwróciła wartość {}.'.format(tekst, liczba_slow)
-print("Rozwiązanie poprawne.")
+print("Rozwiązanie poprawne.")'''
 

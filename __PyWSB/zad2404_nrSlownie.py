@@ -6,40 +6,35 @@ def slownienr(n):
        50:"piędziesiąt",60:"sześcdziesiąt", 70:"siedemdziesiąt",80:"osiemdziesiąt",\
        90:"dziewiędziesiąt",100:"sto",200:"dwieście",300:"trzysta",400:"czterdziesci",500:"pięcset",\
        600:"sześćset",700:"siedemset",800:"osiemset",900:"dziewięćset",1000:"tysiąc"}
-    if n<=20:
+    napis=''
+    if n>=1000:
+        napis=napis+D[1000]
+        n=n-1000
+    if 1000>n>=100:
+        k=(n//100)*100
         for x in D.keys():
-            if x==n:
-                napis=D[x]
-    if n>20:
-        m=n%10
-
+            if k==x:
+                napis=napis+D[x]
+        n=n-k
+    if  100>n>20:
+        m = (n//10)*10
+        for x in D.keys():
+            if x == m:
+                napis=napis+D[x]
+        n=n-m
+    if n<20:
+        for x in D.keys():
+            if n == x:
+                napis =napis+D[x]
 
 
 
     return napis
 
 
-print(slownienr(20))
+print(slownienr(1322))
 
 
 
-import numToWord
-
-def slownie(n):
-    s=numToWord.numToWord(n)
-    return s
 
 
-print(slownie(50))
-
-def tabliczka(x1,x2,y1,y2):
-    print(x1,x2,x)
-     for wiersz in (x1,x2,y1,y2):
-         print(wiersz,end="\t")
-
-         for kolumna in (x1,x2,y1,y2):
-            print(kolumna,end="\t")
-            print(wiersz*kolumna,end="\t")
-
-
-print(tabliczka(3,5,2,4))
