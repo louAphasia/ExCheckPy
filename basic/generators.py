@@ -1,0 +1,8 @@
+#reduce
+
+
+
+#map
+
+#filter
+

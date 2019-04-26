@@ -1,13 +1,13 @@
 
 
 def perfect(n):
-    for i in range(n+1):
-        sum1=0
-    for x in range(1,i):
-        if(i%x==0):
-            sum1=sum1+x
-            if (sum1==i):
-                print(i)
+    for num in range(1,n+1):
+        res=0
+        for i in range(1,num):
+            if(num%i)==0:
+                res=res+i
+        if num==res:
+            print(num)
 
 
-print(perfect(300))
+print(perfect(30))
