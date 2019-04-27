@@ -1,5 +1,12 @@
-pierwsze_skl=[]
+limit=100
+pierwsze_skl=[num for num in range(1,limit) if 0 not in [num%i for i in range(2,int(num/2)+1)]]
+print(pierwsze_skl)
 
+#z filter
+
+primesf=filter(lambda x:all(x%y!=0 for y in range(2,x)), range(2,13))
+
+print(x)
 
 
 def pierwsza_funk(n):
