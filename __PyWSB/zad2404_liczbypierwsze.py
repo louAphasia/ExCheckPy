@@ -4,9 +4,11 @@ print(pierwsze_skl)
 
 #z filter
 
-primesf=filter(lambda x:all(x%y!=0 for y in range(2,x)), range(2,13))
+n=100
+primesf=filter(lambda x:all(x%y!=0 for y in range(2,x)), range(1,n))
 
-print(x)
+for x in primesf:
+    print(x,end="\t")
 
 
 def pierwsza_funk(n):
