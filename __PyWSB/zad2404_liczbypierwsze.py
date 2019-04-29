@@ -10,6 +10,7 @@ primesf=filter(lambda x:all(x%y!=0 for y in range(2,x)), range(1,n))
 for x in primesf:
     print(x,end="\t")
 
+#z yield generator
 
 def pierwsza_funk(n):
     pierwsze=[]
