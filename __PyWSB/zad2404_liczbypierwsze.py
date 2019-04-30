@@ -5,7 +5,14 @@ print(pierwsze_skl)
 #z filter
 
 n=100
-primesf=filter(lambda x:all(x%y!=0 for y in range(2,x)), range(1,n))
+primesf=filter(lambda x:all(x%y!=0 for y in range(2,x)), range(1,n)) #musi byc all
+
+print("all",list(primesf))
+
+#z map
+primelist = lambda n : [x for x in range(2, n) if not 0 in map(lambda z : x % z, range(2,x))]
+
+print("map",primelist(100))
 
 for x in primesf:
     print(x,end="\t")
@@ -18,11 +25,11 @@ def pierwsza_funk(n):
         for k in pierwsze:
             if x%k==0: break
         else:
-            yield x
+            #yield x
             pierwsze.append(x)
     return pierwsze
 
-print("pf",pierwsza_funk(25))
+print("pf",list(pierwsza_funk(25)))
 
 for x in pierwsza_funk(13):
    print(x,end="\t")

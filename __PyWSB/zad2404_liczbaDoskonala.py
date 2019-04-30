@@ -27,6 +27,7 @@ print(perf(10))
 
 n=30
 
-f=[ (2**(x-1)*((2**x)-1) for x in range(2,n))]
+f=[(2**(x-1)*((2**x)-1)) for x in range(2,n) if((2**(x-1)*((2**x)-1))<n)]
 
-print(f)
+print("p",f)
+
