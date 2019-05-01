@@ -15,21 +15,21 @@ bitlab=[]
 for n in range(x):
     bitlab.append(0)
 
-file = open('test.txt')
+file = open('plik')
 while True:
     char = file.read(1) # Wczytanie znak po znaku
     if not char: break
 print(char)
-for char in open('test.txt').read():
+for char in open('plik').read():
     print(char)
 
-file = open('test.txt')
+file = open('plik')
 while True:
     line = file.readline() # Wczytanie wiersz po wierszu
     if not line: break
 print(line, end='')
 
-file = open('test.txt', 'rb')
+file = open('plik', 'rb')
 while True:
     chunk = file.read(10) # Wczytanie bajtowych fragmentów — do 10 bajtów
     if not chunk: break
@@ -47,7 +47,7 @@ def bit_l(self):
 
 #wczytanie zawartosci do lancucha znakow
 
-file=open('test.txt')
+file=open('plik')
 s=file.read()
 
 #wczytanie znak po znaku
@@ -56,7 +56,7 @@ while True:
     char=file.read(1)
     if not char: break
     print(char)
-for char in open('test.txt').read():
+for char in open('plik').read():
     print(char)
 
 # wczytywanie po wierszu
@@ -67,7 +67,7 @@ while True:
 
 # wczytywanie BAJTOWYCH fragmentów do 10
 
-file=open('test.txt','rb')
+file=open('plik','rb')
 while True:
     chunk=file.read(10)
     if not chunk: break

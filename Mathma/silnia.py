@@ -38,4 +38,4 @@ silniali=lambda n:1 if n<1 else \
     reduce(lambda x,y: x*y, range(1,n+1))
 
 x=5
-print(silniali(x))
+print(silniali(5))
