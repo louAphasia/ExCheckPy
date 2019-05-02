@@ -29,5 +29,13 @@ n=30
 
 f=[(2**(x-1)*((2**x)-1)) for x in range(2,n) if((2**(x-1)*((2**x)-1))<n)]
 
+fl=lambda x:2**(x-1)*((2**x)-1)
+fp=[fl(x) for x in range(2,n) if fl(x)<n]
+
+print(fp)
+
 print("p",f)
+
+
+
 
