@@ -39,8 +39,7 @@ def znajdzkod(slownik,x):
     doind=list(slownik)
     return doind.index(x)
 
-def ustawbit(bytetekst,bit,v):
-    maska=(1<<(7-(bit%8)))
+
 
 
 #ile jest liter nie powtarzajacych sie
