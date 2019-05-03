@@ -43,7 +43,9 @@ def bit_l(self):
     return s
 
 
-
+#powielanie liczb
+s='nadi'
+x=':'.join(":02:".format(ord(c))for c in s)
 
 #wczytanie zawartosci do lancucha znakow
 

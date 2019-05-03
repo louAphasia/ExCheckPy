@@ -1,3 +1,4 @@
+import itertools
 
 #yield
 
@@ -75,3 +76,13 @@ print('return',next(mymapr(abs,[1,2])))
 print('return',next(mymapr(abs,[1,2])))
 print('return',next(mymapr(abs,[1,2])))
 #print('return',mymapr(abs,[2,3,-3]).send(100))
+
+IT=map(lambda x:2**x,itertools.count())
+print('it',next(IT))
+print('it',next(IT))
+print('it',next(IT))
+print('it',next(IT))
+print('it',next(IT))
+
+s='nadi'
+x=':'.join(":02:".format(ord(c))for c in s)
