@@ -4,6 +4,24 @@ print(S)
 l=[x + y for x in 'abc' for y in 'lmn']
 print(l)
 
+#slownik
+def f(x):
+    return x*2
+items=['aaa','bbb','ccc']
+keys=[1,2,3,4]
+vals=['a','b','c','d']
+D={key : val for (key,val) in zip(keys,vals) }
+D1=dict(zip(keys,vals))
+D2={x:f(x) for x in items}
+D3=dict((x, f(x))for x in items) #wyrazenie generatora
+#set
+S=[2,4,6,7]
+ss={f(x) for x in S}
+s2=set(f(x) for x in S)
+
+print('iter',type(s2))
+
+
 
 tu=()
 print(type(tu))

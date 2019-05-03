@@ -5,4 +5,8 @@ for integer in int:
 
 file.close()
 
+with open('name','wt')as f:
+    print('aaaaa',file=f)
 ####
+
+

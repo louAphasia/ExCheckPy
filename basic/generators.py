@@ -86,3 +86,15 @@ print('it',next(IT))
 
 s='nadi'
 x=':'.join(":02:".format(ord(c))for c in s)
+
+
+def myzip(*args):
+    iters=(map(iter,args))
+    while iters:
+        res=[next(i) for i in iters]
+        yield tuple(res)
+
+
+print(list(next(myzip('abc','lnamp'))))
+print(list(next(myzip('abc','lnamp'))))
+print(list(next(myzip('abc','lnamp'))))

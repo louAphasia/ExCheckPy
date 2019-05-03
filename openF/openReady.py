@@ -11,3 +11,7 @@ while True:
     if len(wiersz)==0:break
     print(wiersz)
 fh.close()
+
+f3=open("ready.txt",'rt',encoding='ascii',errors='replace')
+print(f3.read())
+f3.close()
