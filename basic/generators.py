@@ -1,5 +1,18 @@
 import itertools
 
+
+
+def gen012():
+    for i in range(3):
+        yield i
+
+def gen01234():
+    yield from gen012()
+    yield 3
+    yield 4
+
+for i in gen01234():
+    print(i)
 #yield
 
 def gen():

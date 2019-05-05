@@ -42,16 +42,20 @@ print(array)
 ##################### II KOD
 
 def part(arr,begin,end):
+    print('beg1',begin)
     pivot_idx=begin
     for i in range(begin+1,end+1):
         if arr[i]<=arr[begin]:
             pivot_idx+=1
             arr[i],arr[pivot_idx]=arr[pivot_idx],arr[i]
     arr[pivot_idx],arr[begin]=arr[begin],arr[pivot_idx]
+    print('pivot',pivot_idx)
+    print(arr)
     return pivot_idx
 
 def quick_recursion(arr,begin,end):
     if begin>=end:
+        print('BEG2',begin)
         return
     pivot_idx=part(arr,begin,end)
     quick_recursion(arr,begin,pivot_idx-1)
@@ -60,8 +64,9 @@ def quick_recursion(arr,begin,end):
 def quick_merge(arr,begin=0,end=None):
     if end is None:
         end=len(arr)-1
+        print('BEG3',begin)
     return quick_recursion(arr,begin,end)
 
-array2=[23,12,11,10,9,0,25]
+array2=[23,0,1,3]
 quick_merge(array2)
 print(array2)

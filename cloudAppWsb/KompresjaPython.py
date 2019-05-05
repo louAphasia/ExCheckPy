@@ -58,7 +58,9 @@ if __name__ == '__main__':
 
 
   #wejscie=input("Tekst do kompresji:")
-  wejscie="aabbccddfff"
+  fh=open('plik','r')
+  wejscie=fh.read()
+  fh.close()
   print("Tekst do kompresji %s" % (wejscie))
   print("Slownik:", do_slownika(wejscie))
 
