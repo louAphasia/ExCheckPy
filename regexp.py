@@ -1,5 +1,8 @@
 import re
 
+regex=re.compile(r'(Nadi) (\w)')
+mo=regex.sub(r'\1***', 'Nadi malutka spi Nadi je chrupki Nadi bu')
+print(mo)
 
 text="Korem dolor ipsem lorum sorem agromas dolor suus sorem"
 find=re.search("dolor.*sorem",text)

@@ -35,3 +35,16 @@ def pierwsza_funk(n):
     return pierwsze
 
 print("pf",list(pierwsza_funk(25)))
+
+# stringi metody
+
+st="oo-nadi-oooosnowdi-ooo"
+print(st.lstrip("o"))
+
+print(st.rjust(100))
+print(st.zfill(50))
+
+print(st.isalnum())
+
+sss='SpamSpamEggsSpamSpam'
+print(sss.strip('Spam'))
