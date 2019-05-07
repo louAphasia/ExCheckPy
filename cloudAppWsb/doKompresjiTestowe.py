@@ -6,7 +6,7 @@ slownik="abcd"
 
 print(znajdzkod(slownik,'d'))
 
-
+# modul binascii
 wejsciowe="aaabbbccc"
 bitynaznak=2
 x=len(wejsciowe)
