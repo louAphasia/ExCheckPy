@@ -125,9 +125,9 @@ def dekompresja(plik_skompresowany) -> str:
 def main():
     start = time.time()
 
-    with open(r'R:\compres_files\test2.txt', 'r') as r:
+    with open(r'D:\Pliki\testx.txt', 'r') as r:
         print("Kompresja pliku", r.name)
-        with open(r'R:\compres_files\skompresowany.txt', 'w+', encoding='utf-8') as w:
+        with open(r'D:\Pliki\skompresowany.txt', 'w+', encoding='utf-8') as w:
             for i in kompresja(r.read()):
                 w.write(i)
 
@@ -137,8 +137,8 @@ def main():
         start = time.time()
         print('Dekompresja...')
 
-        with open(r'R:\compres_files\skompresowany.txt', 'r', encoding='utf-8') as r:
-            with open(r'R:\compres_files\dekompresja.txt', 'w+') as w:
+        with open(r'D:\Pliki\skompresowany.txt', 'r', encoding='utf-8') as r:
+            with open(r'D:\Pliki\dekompresja.txt', 'w+') as w:
                 for i in dekompresja(r.read()):
                     w.write(i)
 

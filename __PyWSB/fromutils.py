@@ -1,5 +1,5 @@
 
-print('fromutils',__name__)
+#  nie musi byc print('fr',__name__)
 
 def add(a,b):
     return a+b

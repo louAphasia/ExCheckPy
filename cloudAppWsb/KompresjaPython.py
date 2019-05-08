@@ -1,16 +1,8 @@
 import math
 
 def do_slownika(wejscie):
-     s=set()
-     w=set(wejscie)
-
-     for x in w:
-         s.add(x)
-     slowniktuple=tuple(s)
-     slowniktupleSort=sorted(slowniktuple)
-     slownik=''.join(slowniktupleSort)
-
-     return slownik
+     slowniktupleSort=sorted(wejscie)
+     return ''.join(slowniktupleSort)
 
 def dlugosc(wejscie):
     return len(wejscie)
@@ -60,7 +52,7 @@ if __name__ == '__main__':
   #wejscie=input("Tekst do kompresji:")
   fh=open('plik','r')
   wejscie=fh.read()
-  fh.close()
+
   print("Tekst do kompresji %s" % (wejscie))
   print("Slownik:", do_slownika(wejscie))
 

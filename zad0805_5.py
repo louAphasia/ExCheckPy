@@ -8,5 +8,5 @@ r=requests.get('http://mpk.wroc.pl/kontrole-biletow').text
 
 soup=BeautifulSoup(r,'html.parser')
 
-for date in soup.find_all(class=):
-    print(date.get(''))
+for date in soup.find_all("span",class_='display-date-single'):
+    if
