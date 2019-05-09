@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 
 r=requests.get('http://mpk.wroc.pl/kontrole-biletow').text
 
@@ -7,6 +8,18 @@ r=requests.get('http://mpk.wroc.pl/kontrole-biletow').text
 #print(r)
 
 soup=BeautifulSoup(r,'html.parser')
+print("Możliwe dzisiaj kontrole " , str(soup.select_one('span[class="date-display-single"]')).strip())
+datetab=soup.find_all("span class","date")
+routestab=soup.find_all("td", class_="views-field views-field-title")
 
-for date in soup.find_all("span",class_='display-date-single'):
-    if
+parsed_d=[]
+parsed_r=[]
+
+for r in routestab:
+    parsed_r.append((str(r.string).strip()))
+
+for d in datetab:
+    parsed_d.append((str(d.string).strip()))
+
+for k,v in zip(parsed_d,parsed_r):
+    print(k + '-'+ v)
