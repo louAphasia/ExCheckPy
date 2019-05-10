@@ -8,7 +8,8 @@ r=requests.get('http://mpk.wroc.pl/kontrole-biletow').text
 #print(r)
 
 soup=BeautifulSoup(r,'html.parser')
-print("Możliwe dzisiaj kontrole " , str(soup.select_one('span[class="date-display-single"]')).strip())
+ss=soup.select_one('span[class="date-display-single"]')
+print("Możliwe dzisiaj kontrole " , str(ss.string).strip())
 datetab=soup.find_all("span class","date")
 routestab=soup.find_all("td", class_="views-field views-field-title")
 

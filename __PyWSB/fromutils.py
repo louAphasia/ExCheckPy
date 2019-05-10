@@ -2,7 +2,7 @@
 #  nie musi byc print('fr',__name__)
 
 def add(a,b):
-    return a+b
+    return a+b+1
 
 if __name__=='__main__':
 
