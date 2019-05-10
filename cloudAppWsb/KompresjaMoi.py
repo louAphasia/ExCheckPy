@@ -35,5 +35,6 @@ def listabitow(dlugosc):
     return lista
 
 print(listabitow(dlugosc(slownik(s))))
-
-
+d=1
+p=3*0
+print(f"%0{4}d" %(d))
