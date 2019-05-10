@@ -1,9 +1,9 @@
 key='dom'
 for i in range(len(key)):
-    print(ord(key[i]),end=',')
+    print((ord(key[i])%26),end=',')
 
 print()
-tekst="Alko"
+tekst="Ala ma kota"
 for x in range(len(tekst)):
     print(ord(tekst[x]),end=',')
 print()
