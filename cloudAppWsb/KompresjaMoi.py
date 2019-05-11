@@ -1,6 +1,7 @@
 import math
+import binascii
 
-s="aabbccddee"
+s="aaaaaaaaaaaaabbbbbbbbbfffffddddddddddd"
 
 def slownik(t):
     s=sorted(set(t))
@@ -60,9 +61,81 @@ def ilebitend(nadmiarowe):
     return end
 
 print(ilebitend(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s))))
+end=ilebitend(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s)))
 
 def ilebitFirst(nadmiarowe):
     dicto={0:'000',1:'001',2:'010',3:'011',4:'100',5:'101',6:'110',7:'111'}
     return dicto.get(nadmiarowe)
 
 print(ilebitFirst(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s))))
+
+first=ilebitFirst(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s)))
+
+
+def ciagbity(input,dict):
+    ciag=''
+    for i in input:
+        if i in dict.keys():
+            ciag+=dict.get(i)
+        else:
+            ciag+=i
+    return ciag
+print(ciagbity(s,Dict))
+
+ciag=ciagbity(s,Dict)
+
+
+def calyciagbity(ciag,first,end):
+    caly=first+ciag+end
+    return caly
+
+print(calyciagbity(ciag,first,end))
+
+def bajtpodzial(calyciag):
+    bajty=[]
+    for i in range(0,len(calyciag),8):
+        bajty.append(calyciag[:8])
+        calyciag=calyciag[8:len(calyciag)]
+    return bajty
+
+
+print(bajtpodzial(calyciagbity(ciag,first,end)))
+
+
+def binaryToDecimal(n):
+    num = n;
+    dec_value = 0;
+
+    # Initializing base
+    # value to 1, i.e 2 ^ 0
+    base1 = 1;
+
+    len1 = len(num);
+    for i in range(len1 - 1, -1, -1):
+        if (num[i] == '1'):
+            dec_value += base1;
+        base1 = base1 * 2;
+
+    return dec_value;
+
+def listaDecimalAscii(bajtylista):
+    output=[]
+    for i in range(len(bajtylista)):
+        decimal=binaryToDecimal(bajtylista[i])
+        asciiznak=chr(decimal)
+        output.append(asciiznak)
+    return output
+
+print(listaDecimalAscii(bajtpodzial(calyciagbity(ciag,first,end))))
+asciikod=listaDecimalAscii(bajtpodzial(calyciagbity(ciag,first,end)))
+
+def skompresowany(asciikod,slownik,dlugosc):
+    asciistr=''.join(asciikod)
+    strslownik=''.join(slownik)
+    output=chr(dlugosc)+strslownik+asciistr
+    return output
+
+print(skompresowany(asciikod,slownik(s),dlugosc(slownik(s))))
+
+
+def Dekompresja(skompresowany):
