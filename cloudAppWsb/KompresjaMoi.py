@@ -1,26 +1,26 @@
 import math
-import binascii
 
-s="aaaaaaaaaaaaabbbbbbbbbfffffddddddddddd"
+
+
 
 def slownik(t):
     s=sorted(set(t))
     slownik=list(s)
     return slownik
 
-print(slownik(s))
+
 
 def dlugosc(slownik):
     y=len(slownik)
     return y
 
-print(dlugosc(slownik(s)))
+
 
 def bitnaznak(dlugosc):
     b=math.ceil((math.log2(dlugosc)))
     return b
 
-print(bitnaznak(dlugosc(slownik(s))))
+
 
 
 
@@ -36,7 +36,7 @@ def nadmiarowe(liczbabitnaznak,lentext):
     nadmiar=dlugoscbit-(3+liczbabitnaznak*lentext)
     return nadmiar
 
-print(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s)))
+
 
 def listabitow(dlugosc,b):
     lista=[]
@@ -44,15 +44,7 @@ def listabitow(dlugosc,b):
         lista.append(f"%0{b}d" % (int(bin(i))))
     return lista
 
-#lista z bitami
-lsb=listabitow(dlugosc(slownik(s)),bitnaznak(dlugosc(slownik(s))))
-slo=list(slownik(s))
-#slownik znak : bity
-Dict=dict(zip(slo,lsb))
-print(Dict)
-d=1
-p=3*0
-print(f"%0{4}d" %(d))
+
 
 def ilebitend(nadmiarowe):
     end=''
@@ -60,16 +52,13 @@ def ilebitend(nadmiarowe):
          end+='1'
     return end
 
-print(ilebitend(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s))))
-end=ilebitend(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s)))
+
 
 def ilebitFirst(nadmiarowe):
     dicto={0:'000',1:'001',2:'010',3:'011',4:'100',5:'101',6:'110',7:'111'}
     return dicto.get(nadmiarowe)
 
-print(ilebitFirst(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s))))
 
-first=ilebitFirst(nadmiarowe(bitnaznak(dlugosc(slownik(s))),lentext(s)))
 
 
 def ciagbity(input,dict):
@@ -80,16 +69,14 @@ def ciagbity(input,dict):
         else:
             ciag+=i
     return ciag
-print(ciagbity(s,Dict))
 
-ciag=ciagbity(s,Dict)
 
 
 def calyciagbity(ciag,first,end):
     caly=first+ciag+end
     return caly
 
-print(calyciagbity(ciag,first,end))
+
 
 def bajtpodzial(calyciag):
     bajty=[]
@@ -99,7 +86,7 @@ def bajtpodzial(calyciag):
     return bajty
 
 
-print(bajtpodzial(calyciagbity(ciag,first,end)))
+
 
 
 def binaryToDecimal(n):
@@ -126,8 +113,7 @@ def listaDecimalAscii(bajtylista):
         output.append(asciiznak)
     return output
 
-print(listaDecimalAscii(bajtpodzial(calyciagbity(ciag,first,end))))
-asciikod=listaDecimalAscii(bajtpodzial(calyciagbity(ciag,first,end)))
+
 
 def skompresowany(asciikod,slownik,dlugosc):
     asciistr=''.join(asciikod)
@@ -135,7 +121,128 @@ def skompresowany(asciikod,slownik,dlugosc):
     output=chr(dlugosc)+strslownik+asciistr
     return output
 
-print(skompresowany(asciikod,slownik(s),dlugosc(slownik(s))))
 
 
-def Dekompresja(skompresowany):
+def kompread(skomp):
+    return skomp
+
+
+def dekompresja(skompresowany):
+    def odczytslownik(skompresowany):
+        znak=ord(skompresowany[0])
+        slownik=skompresowany[1:(znak+1)]
+        return slownik
+
+    print(odczytslownik(skompresowany))
+
+    slownikde=odczytslownik(skompresowany)
+    dlugoscslo=len(odczytslownik(skompresowany))
+
+    def bitnaznak(dlugosc):
+        b = math.ceil((math.log2(dlugosc)))
+        return b
+
+    bitnazn=bitnaznak(dlugoscslo)
+    print(bitnaznak)
+
+    def listabitow(dlugosc, b):
+        lista = []
+        for i in range(dlugosc):
+            lista.append(f"%0{b}d" % (int(bin(i))))
+        return lista
+
+    lsb=listabitow(dlugoscslo,bitnazn)
+
+    slo = list(slownikde)
+    # slownik znak : bity
+    Dict = dict(zip(slo, lsb))
+    print(Dict)
+
+    def dec_to_bin(n):
+        return bin(n)
+
+    def odczytdecimalascii(skompresowany,dlugoscslownik):
+        listadecimal=[]
+        for i in range((dlugoscslownik+1),len(skompresowany)):
+            listadecimal.append(ord(skompresowany[i]))
+        return listadecimal
+
+    print(odczytdecimalascii(skompresowany,dlugoscslo))
+
+    listaodczytde=odczytdecimalascii(skompresowany,dlugoscslo)
+
+    def decnabinlista(listaodczytdec):
+        listabit=[]
+        for i in range(len(listaodczytde)):
+            listabit.append((dec_to_bin(listaodczytde[i])))
+        return listabit
+
+    listabity=decnabinlista(listaodczytde)
+    print(listabity)
+
+
+
+
+if __name__ == '__main__':
+
+
+
+  #wejscie=input("Tekst do kompresji:")
+  fh=open('plik','r')
+  s=fh.read()
+
+  print(slownik(s))
+
+  print(dlugosc(slownik(s)))
+
+  print(bitnaznak(dlugosc(slownik(s))))
+
+  print(nadmiarowe(bitnaznak(dlugosc(slownik(s))), lentext(s)))
+
+  # lista z bitami
+  lsb = listabitow(dlugosc(slownik(s)), bitnaznak(dlugosc(slownik(s))))
+  slo = list(slownik(s))
+  # slownik znak : bity
+  Dict = dict(zip(slo, lsb))
+  print(Dict)
+  d = 1
+  p = 3 * 0
+  print(f"%0{4}d" % (d))
+
+  print(ilebitend(nadmiarowe(bitnaznak(dlugosc(slownik(s))), lentext(s))))
+  end = ilebitend(nadmiarowe(bitnaznak(dlugosc(slownik(s))), lentext(s)))
+
+  print(ilebitFirst(nadmiarowe(bitnaznak(dlugosc(slownik(s))), lentext(s))))
+
+  first = ilebitFirst(nadmiarowe(bitnaznak(dlugosc(slownik(s))), lentext(s)))
+
+  print(ciagbity(s, Dict))
+
+  ciag = ciagbity(s, Dict)
+
+  print(calyciagbity(ciag, first, end))
+
+  print(bajtpodzial(calyciagbity(ciag, first, end)))
+
+  print(listaDecimalAscii(bajtpodzial(calyciagbity(ciag, first, end))))
+  asciikod = listaDecimalAscii(bajtpodzial(calyciagbity(ciag, first, end)))
+
+  print(skompresowany(asciikod, slownik(s), dlugosc(slownik(s))))
+
+
+
+  print(len(skompresowany(asciikod, slownik(s), dlugosc(slownik(s)))))
+
+
+  print(len(s))
+
+  with open(r'D:\Pliki\skompresowany.txt', 'w+', encoding='utf-8') as w:
+          w.write(skompresowany(asciikod, slownik(s), dlugosc(slownik(s))))
+
+  with open(r'D:\Pliki\skompresowany.txt', 'r', encoding='utf-8') as r:
+      komp=r.read()
+
+  dekompresja(komp)
+     # '''''with open(r'D:\Pliki\dekompresja.txt', 'w+') as w:
+      #    for i in dekompresja(r.read()):
+      #        w.write(i)'''
