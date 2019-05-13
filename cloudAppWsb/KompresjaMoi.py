@@ -180,6 +180,69 @@ def dekompresja(skompresowany):
     listabity=decnabinlista(listaodczytde)
     print(listabity)
 
+    def stringzBitow(listybity):
+        ciagstr=''
+        for i in range(len(listybity)):
+            stbity = str(listybity[i])
+            if len(listybity[i])<8:
+                str8=stbity.zfill(8)
+                ciagstr=ciagstr+''.join(str8)
+            else:
+                ciagstr=ciagstr+''.join(stbity)
+
+        return ciagstr
+
+    print(stringzBitow(listabity))
+
+    ciagstr=stringzBitow(listabity)
+
+    def ilenadmiarowe(ciagstr):
+        ile=ciagstr[:3]
+        dict={'000':0,'001':1,'010':2,'011':3,'100':4,'101':5,'110':6,'111':7}
+        return dict.get(ile)
+
+    print(ilenadmiarowe(stringzBitow(listabity)))
+
+    endjedynki=ilenadmiarowe(stringzBitow(listabity))
+
+    def bezendfirstjedynek(ciagstr,endjedynki):
+        ciagodszyfr=ciagstr[3:]
+        ciagodszyfr=ciagodszyfr[:len(ciagodszyfr)-endjedynki]
+        return ciagodszyfr
+
+    print(bezendfirstjedynek(ciagstr,endjedynki))
+
+    ciagdoodszyfr=bezendfirstjedynek(ciagstr,endjedynki)
+
+    def odszyfrowanie(Dict,ciagdoodszyfr):
+        revdict={Dict[v]: v for v in Dict.keys()}
+        print(revdict)
+        ile=len(revdict)
+        print(ile)
+        ilezer=bitnaznak(ile)
+        print(ilezer)
+
+        ciagdoodszyfrowanie= [ciagdoodszyfr[x:x+ilezer] for x in range(0,len(ciagdoodszyfr),ilezer)]
+        print(ciagdoodszyfrowanie)
+        odszyfr = ''
+        for i in range(len(ciagdoodszyfrowanie)):
+           print(ciagdoodszyfrowanie[i])
+           if ciagdoodszyfrowanie[i] in revdict.keys():
+              odszyfr=odszyfr +''.join(revdict.get(ciagdoodszyfrowanie[i]))
+        return odszyfr
+
+
+
+
+    print(odszyfrowanie(Dict,ciagdoodszyfr))
+
+
+
+
+
+
+
+
 
 
 
