@@ -8,7 +8,11 @@ if __name__=="__main__":
 
     print(cipherdev)
 
-
+while is_runnning:
+    print('aaa')
+    x=input()
+    if x=='exit':
+        is_running=False
 
 
 
