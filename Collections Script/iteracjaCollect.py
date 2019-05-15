@@ -1,3 +1,9 @@
+import itertools
+
+x=list(itertools.product(range(4),repeat=2))
+
+print(x)
+
 lista= ["zero", 3,"cat", "dog"]
 
 for item in lista:

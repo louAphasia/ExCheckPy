@@ -1,0 +1,2 @@
+class Czas:
+    pass
