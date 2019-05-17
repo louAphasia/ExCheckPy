@@ -1,12 +1,16 @@
 cipher = {'a': 'y', 'e': 'i', 'i': 'o', 'o': 'a', 'y': 'e'}
 
-def encode(plaintext,cipher=cipher) -> str:
+cipher = {'a': 'y', 'e': 'i', 'i': 'o', 'o': 'a', 'y': 'e'}
 
-
+def encode(plaintext,cipher=cipher):
+    szyfr=[]
     for ch in plaintext:
         if ch in cipher.keys():
-           plaintext=plaintext.replace(ch,cipher.get(ch))
-    return (plaintext)
+           print(ch,cipher.get(ch))
+           szyfr.append(cipher.get(ch))
+        else:
+            szyfr.append(ch)
+    return ''.join(szyfr)
 
 
 cipherdev = {cipher[v]: v for v in cipher.keys()}
