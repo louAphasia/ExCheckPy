@@ -1,34 +1,66 @@
 from datetime import time
 
 class Czas:
-    def __init__(self,godz,minuty):
-        self.__time=time(hour=godz,minute=minuty)
+    def __init__(self,time):
+        self.time=time.split('h',1)
+        self.__godz=self.time[0]
+        self.__minuty=self.time[1]
 
 
     def to_string(self)->str:
-        print(self.__time)
+        x=str(self.__godz)
+        y=str(self.__minuty)
+        strin=x+'h'+y
+        return strin
 
     def dodaj(self,t):
-        x=t.split('h')
-        c=Czas(x[0],x[1])
-        return (self.__time - c)
+        x=t.split('.')
+        a=int(self.__godz)
+        s=self.__minuty.strip('min')
+        c=int(x[0])
+        d=int(x[1])
+        b=int(s)
+        n2=(b+d)%60
+        if n2==0:
+            a=a+1
+        n1 = (a + c) % 24
+        doda=str(n1)+'.'+str(n2)
+        return doda
+
 
     def odejmij(self,t):
-        x =int(t.split('h'))
-        c = Czas(x[0], x[1])
-        return (self.__godz - c.x[0], self.__minuty - x[1])
+        x = t.split('.')
+        a = int(self.__godz)
+        s = self.__minuty.strip('min')
+        c = int(x[0])
+        d = int(x[1])
+        b = int(s)
+        n2 = abs(b - d)%60
+        n1 = abs(a - c) % 24
+        odej = str(n1) + '.' + str(n2)
+        return odej
+
+    #print(f"%0{4}d" % (d))
 
     def pomnoz(self,ile):
-        return (self.__godz*ile,self.__minuty*ile)
+        a = int(self.__godz)
+        s = self.__minuty.strip('min')
+        b = int(s)
+        n1 = (a*ile)%24
+        n2 = (b*ile)%60
+        pom = str(n1) + '.' + str(n2)
+        return pom
 
 
 
 def main():
 
-    c=Czas(12,30)
-    c.to_string()
+    c=Czas("12 h 30 min")
+    print(c.to_string())
+    print(c.dodaj('9.30'))
+    print(c.odejmij('8.35'))
+    print(c.pomnoz(2))
 
-    c.odejmij('10 h 20')
 
 
 
