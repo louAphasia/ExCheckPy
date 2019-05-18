@@ -1,7 +1,7 @@
 import urllib,re
 
 
-_url=""
+_url="https://www.bankofcanada.ca/valet/observations/group/FX_RATES_MONTHLY/csv?"
 
 def get(refresh=False):
     if refresh:
@@ -21,6 +21,7 @@ def get(refresh=False):
             except ValueError as err:
                 print("error{}:{}".format(err,line))
     return get.rates
-get.rates={}
 
+
+print(get())
 
