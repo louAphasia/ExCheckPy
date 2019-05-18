@@ -8,10 +8,12 @@ class Czas:
 
 
     def to_string(self)->str:
-        x=str(self.__godz)
-        y=str(self.__minuty)
-        strin=x+'h'+y
-        return strin
+        x=int(self.__godz)
+        s = self.__minuty.strip('min')
+        y=int(s)
+        t=time(x,y)
+        m=t.strftime("%I:%M%p")
+        return m
 
     def dodaj(self,t):
         x=t.split('.')
@@ -24,8 +26,9 @@ class Czas:
         if n2==0:
             a=a+1
         n1 = (a + c) % 24
-        doda=str(n1)+'.'+str(n2)
-        return doda
+        t=time(n1,n2)
+        m = t.strftime("%I:%M%p")
+        return m
 
 
     def odejmij(self,t):
@@ -37,8 +40,9 @@ class Czas:
         b = int(s)
         n2 = abs(b - d)%60
         n1 = abs(a - c) % 24
-        odej = str(n1) + '.' + str(n2)
-        return odej
+        t = time(n1, n2)
+        m = t.strftime("%I:%M%p")
+        return m
 
     #print(f"%0{4}d" % (d))
 
@@ -48,8 +52,9 @@ class Czas:
         b = int(s)
         n1 = (a*ile)%24
         n2 = (b*ile)%60
-        pom = str(n1) + '.' + str(n2)
-        return pom
+        t = time(n1, n2)
+        m = t.strftime("%I:%M%p")
+        return m
 
 
 
