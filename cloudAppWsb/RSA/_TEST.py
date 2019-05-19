@@ -1,71 +1,44 @@
 from ExCheckPy.cloudAppWsb.RSA.KeysPublicPrivate import genKeys
 
-SYMBOLS='ABCDEFGHIJKLMNOPQRSTUWVYZabcdefghijklmnoprstuvwzy1234567890_ !?.,'
-
-x=pow(19,5,119)
-# c=t^e mod n
-#print(x)
 
 
+SYMBOLS='ABCDEFGHIJKLMNOPQRSTUWVYZabcdefghijklmnoprstuvwzy'
 
-message='Ala ma koty i lubi 123'
-key=119,5
 
 
 def encryptMessage(message,key):
-    encryptedBlocks=[]
+    encryptedText=[]
     n,e=key
+    for index in message:
+        encryptedText.append((pow(index,e,n))+49%49)
+    return encryptedText
 
-    for block in message:
-        #print(block,end=',')
-        encryptedBlocks.append((pow(block,e,n))%66)
-    return encryptedBlocks
+def decryptMessage(encryptedText,key):
+    decrypted=[]
+    n,d=key
+    #plaintext = ciphertext ^d mod n
+    for symbol in encryptedText:
+        print(symbol)
+        decrypted.append((pow(symbol,d,n))+49%49)
+
+    return decrypted
+
+x=pow(36,29,713)
+# c=t^e mod n
+print(x)
 
 
-#print(encryptMessage(message,key))
 
-def encryptedDopliku(message):
-    content=[]
-    for x in message:
-        content.append(SYMBOLS[x])
-    return ''.join(content)
+y=pow(676,569,713)
+print(y)
+print('---------------------------------------------')
+#[0, 36, 25, 60, 37, 25, 60, 35, 39, 43, 25, 60, 36, 39, 41, 44, 37, 60, 42, 39, 41, 44, 37, 60, 49, 50, 51, 52, 53]
 
-
-
-def getindexSYMBOLSFromText(message):
-    mess=[]
-    for ch in message:
-        if ch not in SYMBOLS:
-            print('ERROR don have literka %s' % (ch))
-        else:
-            mess.append(SYMBOLS.index(ch))
-    return mess
-
-#print(getindexSYMBOLSFromText(message))
-
-def main():
-    filename='encrypted_file.txt'
-    mode='encrypt'  # moze byc decrypt
-    with open(r'tekst.txt', 'r', encoding='utf-8') as r:
-        komp = r.read()
-
-        print("z pliku",komp)
-    if mode=='encrypt':
-        message=komp
-        pubKeyFilename=genKeys(16)[0]
-
-        ind=getindexSYMBOLSFromText(message)
-        print("indexy",ind)
-        doplik=encryptMessage(ind,pubKeyFilename)
-
-        plik=encryptedDopliku(doplik)
-        print(plik)
-
-        #encryptAndWriteToFile(filename,doplik)
-
-        print('Enncrypted text:')
-        with open(r'D:\_COMPUTER Science\Python\ExCheckPy\ExCheckPy\cloudAppWsb\RSA\encrypted.txt', 'w', encoding='utf-8') as w:
-            w.write(plik)
-
-if __name__=='__main__':
-    main()
+#message=Ala ma kota lorum sorum 12345
+keypubl=713,29
+keypriv=713,569
+szyfr=[0, 6, 36, 49, 21, 36,44, 36, 6, 7]
+en=encryptMessage(szyfr,keypubl)
+print(en)
+de=decryptMessage(en,keypriv)
+print(de)

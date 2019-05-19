@@ -1,51 +1,85 @@
-import sys,math
-from ExCheckPy.cloudAppWsb.RSA.KeysPublicPrivate import genKeys
 
-SYMBOLS='ABCDEFGHIJKLMNOPQRSTUWVYZabcdefghijklmnoprstuvwzy1234567890_ !?.,'
+from ExCheckPy.cloudAppWsb.RSA.KeysPublicPrivate import genKeys, makeKeyFiles
+
+
+# przyjety SŁOWNIK NA PODSTAWIE KTÓREGO BĘDZIEMY przeprowadzać szyfrowanie i odszyfrowanie danego tekstu 90 znaków/symboli
+
+SYMBOLS='ABCDEFGHIJKLMNOPQRSTUWVYZabcdefghijklmnoprstuvwzy '
 
 def main():
-    filename='encrypted_file.txt'
-    mode='encrypt'  # moze byc decrypt
+
+    filename='encrypted_file.txt' # nadanie nazwy pliku w którym będzie zapisany zaszyfrowany tekst
+    filename2='decrypted_file.txt'
+    mode='encrypt'  # moze byc 'decrypt'  WYBIERAMY TRYB
+
+    # otiweramy tekst do szyfrowania
+
     with open(r'tekst.txt', 'r', encoding='utf-8') as r:
-        komp = r.read()
+        message= r.read()
+
+        # generujemy klucze publiczne i prywatne pobieramy klucz pod indeksem [0] a prywatny pod [1]
+        pubiprivKey= genKeys()
+        print(pubiprivKey)
+        publKey=pubiprivKey[0]
+        print(publKey)
+        privKey=pubiprivKey[1]
+        print(privKey)
+
+        makeKeyFiles('klucz',pubiprivKey)
+
     if mode=='encrypt':
-        message=komp
-        pubKeyFilename=genKeys(16)[0]
 
-        print('Encrypting and writting to %s...'% (pubKeyFilename))
-        encryptedText=encryptAndWriteToFile(filename,pubKeyFilename,komp)
-
-        print('Enncrypted text:')
+        mess=getIndexSYMFromText(message)
+        print("message", mess)
+        indexmess=encryptMessage(mess,publKey)
+        print("indexmess",indexmess)
+        indexy=toFIX(indexmess)
+        encryptedText=toSYMBOLS(indexy)
         print(encryptedText)
+        encrypted=WriteToFile(filename,encryptedText)
+        print('Encrypting and writting to %s...' % (filename))
 
-    elif mode=='decrypt':
-        privKeyFilename=genKeys(16)[1]
-        print('Reading from %s...' %(filename))
+        print('Encrypted text:')
 
-        decryptedText=readFromFileAndDecrypt(filename,privKeyFilename)
 
-        print('Decrpted text:')
+        print('DESZYFROWANIEReading from %s...' %(filename))
+
+        encryptedText=ReadFromFile(filename)
+        print("decryptedfile",encryptedText)
+        indextekst=getIndexSYMFromText(encryptedText)
+        indexrev=indexSlownik(indextekst)
+        print("indextekst",indextekst)
+        print("indexrev",indexrev)
+        tekst=decryptMessage(indexrev,privKey)
+        print('de tekst',tekst)
+        decryptedText=toSYMBOLS(tekst)
         print(decryptedText)
+        decrypted=WriteToFile(filename2,decryptedText)
 
+        print('Decrypted text:to %s' % (filename2))
+
+
+###############################
+
+# zamiana symboli z naszego tekstu na indexy ze slownika SYMBOLS do szyfrowania
 
 
 def getIndexSYMFromText(message):
     mess=[]
     for ch in message:
         if ch not in SYMBOLS:
-            print('ERROR don have literka %s' % (ch))
+            mess.append('')
         else:
             mess.append(SYMBOLS.index(ch))
     return mess
 
-
+# szyfrowanie > każdemu znaku wg algorytmu C=t^e mod n jest nadany nowy indekst i symbol
 
 def encryptMessage(message,key):
     encryptedText=[]
     n,e=key
-
-    for index in getIndexSYMFromText(message):
-        encryptedText.append(pow(index,e,n))
+    for index in message:
+        encryptedText.append((pow(index,e,n)))
     return encryptedText
 
 def decryptMessage(encryptedText,key):
@@ -53,7 +87,7 @@ def decryptMessage(encryptedText,key):
     n,d=key
     #plaintext = ciphertext ^d mod n
     for symbol in encryptedText:
-        decrypted.append(pow(symbol,d,n))
+        decrypted.append((pow(symbol,d,n)))
 
     return decrypted
 
@@ -64,35 +98,43 @@ def decryptMessage(encryptedText,key):
     keySize,n,EorD=content.split(',')
     return (int(keySize),int(n),int(EorD))'''
 
-def encryptAndWriteToFile(messageFilename,message,key):
-    content= encryptMessage(message,key)
-    for i in range(content):
-        content[i]=str(content[i])
-    encryptedContent=','.join(content)
+def toFIX(x):
+    y=[]
+    for i in x:
+        y.append(i%49)
+    return y
 
-    fo=open(messageFilename,'w')
-    fo.write(encryptedContent)
+def toSYMBOLS(indexy):
+    content = []
+    for i in indexy:
+        content.append(SYMBOLS[i])
+    Contenttofile = ''.join(content)
+
+    return Contenttofile
+
+def indexSlownik(indexy):
+    content=[]
+    for i in indexy:
+        content.append(i)
+    return content
+
+
+
+def WriteToFile(messageFilename, odszyfr):
+    fo = open(messageFilename, 'w')
+    fo.write(odszyfr)
     fo.close()
 
-    return encryptedContent
 
-def readFromFileAndDecrypt(messageFilename,keyFilename):
-    keySize,n,d=readFile(keyFilename)
+
+
+def ReadFromFile(messageFilename):
 
     fo=open(messageFilename)
     content=fo.read()
-    messageLen,blockSize,encryptedMessage=content.split('_')
-    messageLen=int(messageLen)
-    blockSize=int(blockSize)
+    fo.close()
 
-    if not (math.log(2**keySize,len(SYMBOLS))>=blockSize):
-        sys.exit('ERROR block size is too large fo the key and symbol set size correct key file')
-
-    encryptedBlocks=[]
-    for block in encryptedMessage.split(','):
-        encryptedBlocks.append(int(block))
-
-    return decryptMessage(encryptedBlocks,messageLen,(n,d),blockSize)
+    return content
 
 if __name__=='__main__':
     main()
