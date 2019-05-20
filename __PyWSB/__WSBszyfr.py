@@ -1,13 +1,13 @@
-cipher = {'a': 'y', 'e': 'i', 'i': 'o', 'o': 'a', 'y': 'e'}
+
 
 cipher = {'a': 'y', 'e': 'i', 'i': 'o', 'o': 'a', 'y': 'e'}
 
-def encode(plaintext,cipher=cipher):
-    szyfr=[]
+
+def encode(plaintext, cipher=cipher):
+    szyfr = []
     for ch in plaintext:
         if ch in cipher.keys():
-           print(ch,cipher.get(ch))
-           szyfr.append(cipher.get(ch))
+            szyfr.append(cipher.get(ch))
         else:
             szyfr.append(ch)
     return ''.join(szyfr)
@@ -15,8 +15,11 @@ def encode(plaintext,cipher=cipher):
 
 cipherdev = {cipher[v]: v for v in cipher.keys()}
 
-def decode(encoded,cipherdev=cipherdev):
-    return encode(encoded,cipherdev)
+
+def decode(encoded, cipherdev=cipherdev):
+
+    return encode(encoded, cipherdev)
+
 
 
 
@@ -32,13 +35,23 @@ def decode(encoded,cipherdev=cipherdev):
 
 
 
+
 def main():
+    while True:
+        odp = input("Wybierz operacje (szyfrowanie, deszyfrowanie, wyjscie): ")
+        if odp == "szyfrowanie":
+            text = input("Podaj tekst ")
+            print("Wynik: ",encode(text))
+
+        elif odp == "deszyfrowanie":
+            szyfr = input("Podaj tekst ")
+            print("Wynik: ", decode(szyfr))
+
+        elif odp == "wyjscie":
+            break
+        else:
+            print("Bledna operacja ")
 
 
-    plaintext = "hello foo"
-    print(encode(plaintext,cipher))
-
-    print(decode(encode(plaintext)))
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
