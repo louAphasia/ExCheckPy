@@ -11,36 +11,46 @@ def main():
     filename2='decrypted_file.txt'
     mode='encrypt'  # moze byc 'decrypt'  WYBIERAMY TRYB
 
-    # otiweramy tekst do szyfrowania
+    # otwieramy tekst do szyfrowania
 
-    with open(r'tekst.txt', 'r', encoding='latin-1') as r:
-        message= r.read()
-        print(message)
+    if mode == 'encrypt':
+        with open(r'tekst.txt', 'r', encoding='utf-8') as r:
+            message= r.read()
+            print(message)
         # generujemy klucze publiczne i prywatne pobieramy klucz pod indeksem [0] a prywatny pod [1]
         pubiprivKey= genKeys()
         print(pubiprivKey)
         publKey=pubiprivKey[0]
-        privKey=pubiprivKey[1]
+        #privKey=pubiprivKey[1]
 
-       #makeKeyFiles('klucze',pubiprivKey)
+        makeKeyFiles('klucze',pubiprivKey)
 
 
-    if mode=='encrypt':
+
+
+
 
         x=TextIndexDec(message)
         print('ords',x)
         e= encrypted(x,publKey)
         print('encrypted',e)
-        d=DecCharASCII(e)
-        print(d)
+        dch=DecCharASCII(e)
+        print(dch)
+        WriteToFile(filename,dch)
 
+    #if mode == 'decrypt':
 
-        o=ChrnaOrds(d)
+        m = readFileKey('klucze_privkey.txt')
+        print(m)
+        re=ReadFromFile(filename)
+        print(re)
+        o=ChrnaOrds(re)
         print("ords",o)
-        de=decrypted(o,privKey)
+        de=decrypted(o,m)
         print("decrypted",de)
         dee=DecCharASCII(de)
         print(dee)
+
 
 
 
@@ -79,11 +89,35 @@ def ChrnaOrds(szyfr):
 def decrypted(szyfr,keyPriv):
     content=[]
     n,d=keyPriv
+    print("n",n)
+    print("d",d)
     for x in szyfr:
-        print(x)
         content.append(pow(x,d,n))
     return content
 
+#######
+def readFileKey(keyFilename):
+    fo=open(keyFilename)
+    content=fo.read()
+    fo.close()
+    d,n,=content.split(',')
+    return (int(d),int(n))
+
+
+def WriteToFile(messageFilename, odszyfr):
+    fo = open(messageFilename, 'w', encoding="utf-8")
+    fo.write(odszyfr)
+    fo.close()
+
+
+
+def ReadFromFile(messageFilename):
+
+    fo=open(messageFilename,'r',encoding='utf-8')
+    content=fo.read()
+    fo.close()
+
+    return content
 
 
 if __name__=="__main__":
