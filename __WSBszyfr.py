@@ -23,16 +23,6 @@ def decode(encoded, cipherdev=cipherdev):
 
 
 
-'''def decode(encoded):
-
-    cipherrev={'y':'a','i':'e','o':'i','a':'o','e':'y'}
-    for i in encoded:
-        if i in cipherrev.keys():
-            encoded=encoded.replace(i,cipherrev.get(i))
-    return (encoded)
-'''
-
-
 
 
 

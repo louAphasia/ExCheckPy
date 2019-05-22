@@ -1,4 +1,6 @@
-def readFile(keyFilename):
+#Aplikacja  dodanie wpisow  zaszyfrowanie RSA
+
+'''def readFile(keyFilename):
     fo=open(keyFilename)
     content=fo.read()
     fo.close()
@@ -21,4 +23,4 @@ def readFromFileAndDecrypt(messageFilename,keyFilename):
     for block in encryptedMessage.split(','):
         encryptedBlocks.append(int(block))
 
-    return decryptMessage(encryptedBlocks,messageLen,(n,d),blockSize)
+    return decryptMessage(encryptedBlocks,messageLen,(n,d),blockSize)'''

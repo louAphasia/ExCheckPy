@@ -1,4 +1,4 @@
-from ExCheckPy.cloudAppWsb.RSA.KeysPublicPrivate import genKeys, makeKeyFiles
+from cloudAppWsb.RSA.KeysPublicPrivate import genKeys, makeKeyFiles
 
 
 # przyjety SŁOWNIK NA PODSTAWIE KTÓREGO BĘDZIEMY przeprowadzać szyfrowanie i odszyfrowanie danego tekstu 90 znaków/symboli
@@ -56,7 +56,7 @@ def main():
 
 
 
-def TextIndexDec(message):
+def TextIndexDec(message):  # dodanie jedynki
     content=[]
     for x in message:
         content.append(ord(x))
