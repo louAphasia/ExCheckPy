@@ -1,4 +1,4 @@
-from cloudAppWsb.RSA.KeysPublicPrivate import genKeys, makeKeyFiles
+from ExCheckPy.cloudAppWsb.RSA.KeysPublicPrivate import genKeys, makeKeyFiles
 
 
 # przyjety SŁOWNIK NA PODSTAWIE KTÓREGO BĘDZIEMY przeprowadzać szyfrowanie i odszyfrowanie danego tekstu 90 znaków/symboli
@@ -66,7 +66,7 @@ def encrypted(message,keyPubl):
     content=[]
     n,e=keyPubl
     for x in message:
-        content.append((pow(x,e,n)))
+        content.append((pow(x,e,n))+1)
     return content
 
 def DecCharASCII(ords):
@@ -92,7 +92,7 @@ def decrypted(szyfr,keyPriv):
     print("n",n)
     print("d",d)
     for x in szyfr:
-        content.append(pow(x,d,n))
+        content.append(pow(x-1,d,n))
     return content
 
 #######
