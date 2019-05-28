@@ -1,0 +1,96 @@
+czy dopisac testy > jak dlugo bedzie sluzyl
+
+fp=open("tekst.txt","w")
+
+fp.close()
+
+with open("text.tx","w"???) as fp:
+text=fp.read()
+
+line=fp.readline()
+
+  for line in fp:
+     print (line)
+
+  with open('tekst.txt')as fp:
+  lines=list(fp)
+
+  rzadko readlines()
+
+  r
+  r+
+  w otworzymy w trybie to co bylo w tym pliku wszystko zostanie nadpisane
+  a
+  wb
+  rb w trybie binarnym  ISTOTNE CZY BINARNY LINUX WIN NA POZIOMIE SYTEMU OP.
+  jezeli na Linuxie a.txt plik   a otwieram w notatniku sytemowy na win
+  Ala
+  ma    _____>  Ala ma kota [bedzie w win w jednej linii
+  kota
+
+\ n nowa linia linux   ala \n ma \n kota   4 znak same \n nic nie znaczy dla win
+\r\n wind
+\r mac apple
+  gdy win   \r\n w pliku z dysku w trybie textowy zamienia \r \n zamienia \n
+  a jak zapisujemy konwersja odwrotna \r  \r\n
+
+  linux  \n na n
+
+  gdy otwieramy obrazek nie ma tekstu to Ciag bajtow
+  32 jako znak to spacja
+  a 32 jako piksel zalezy od programu
+  jesli w tym obrazu jakas liczba odpowiada \r\n w trybie tekstowym zamieni te znak a w trybie binarnym poprawnie odczyta
+  NIE OTWIERAC OBRAZKOW W TRYBIE TEKSTOWYM TAK
+  SAMO NARZEDZIA DO KOPIOWANIA PLIKOW TEZ W TRYBIE BINARNYM
+
+  -----------------
+  W TRYBIE BINARNYM
+  bytes.decode(encoding="utf-8", errors="strict"
+  lub bytearray.decode......to samo co wyzej
+
+=================================JSON
+słownik[object] i lista[array] polaczone  {
+"id":23455,
+"coord":{"lon":0,13
+
+import json
+with open("tmp.txt") as fp:
+weather.json.load(fp)
+
+with open...as fp
+file-fp.read()
+loads,...
+
+zapisane musi byc slownik w pythonie
+with open("txt.") as fp
+json.dump(weather,fp)
+
+dumps() zamienia obiekt na napis
+
+XML kiedy lepiej uzywac json a xml  > tam gdzie czlowiek bedzie odczytywal to bedzie latwiej xml
+attribute {}  a text pomiędzy tagami
+<country>GB</country>
+
+import xml.etree.ElementTree as ET
+
+tree=ET.parse('weather.xml')
+root=tree.getroot()
+
+root=ET.fromstring(weather as string
+
+print("Tag": root.tag
+root.attrib
+
+for child in root
+====================================================================
+subprocess.run   uruchomienie innego programu  sprawdzarki
+(*args,capture_output [przechwucenie dzialania
+check czy poprawnie\shell uruchom jakby user uruchomil go w linii polecen
+
+
+import subprocess
+subprocess.run('dir>lista'
+    ( ["dir"] capture_output=True
+    stdout=subprocess.PIPE
+    stderr=subprocess.PIPE  cpt.stdout robia to samo w ponizej py 3.7
+    input = co ma byc do tego programu przeslane
