@@ -12,7 +12,7 @@ for w in range(len(lista[i+1:])):
   if lista[w]==e:
       print('yes')
       del lista[w]
-
+'''
 x=4
 listaa=[2,3,4,3,4,5,4,4]
 
@@ -30,7 +30,19 @@ def usun(listaa,x):
     return newlist
 
 
-print(usun(listaa,x))
+print(usun(listaa,x))'''
+
+x=2
+elementy=[2,3,2,2,2,5]
+indices = [i for i, a in enumerate(elementy) if a == x]
+print(indices)
+for x in indices[1:]:
+    elementy[x] = 'del'
+print(elementy)
+elementy=[x for x in elementy if x!='del']
+print(elementy)
+
+
 
 
 

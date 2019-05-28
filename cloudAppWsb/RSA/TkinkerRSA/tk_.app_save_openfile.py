@@ -56,21 +56,22 @@ feet=StringVar()
 meters=StringVar()
 
 # FEET ENTRY
-
-feeten=ttk.Entry(mainframe,width=10, textvariable=feet)
+ttk.Label(mainframe,text='wpisz dane').grid(column=1,row=1,sticky=(W,E))
+feeten=ttk.Entry(mainframe, textvariable=feet)
 feeten.grid(column=2,row=1,sticky=(N,S))
 
 # LABEL  Button w MAINFRAME
 ttk.Label(mainframe,textvariable=meters).grid(column=2,row=2,sticky=(W,E))
 
+ttk.Button(mainframe,text="Dodaj",command=calculate).grid(column=3,row=1,sticky=W)
 
 ttk.Button(mainframe,text="Szyfruj",command=calculate).grid(column=3,row=3,sticky=W)
-ttk.Button(mainframe,text="Zapisz do pliku", command=save).grid(column=2,row=3,sticky=W)
-ttk.Button(mainframe,text="Otworz plik z dysku ", command=openfile).grid(column=1,row=3,sticky=W)
+ttk.Button(mainframe,text="Zapisz do pliku zaszyfrowane", command=save).grid(column=2,row=3,sticky=W)
+ttk.Button(mainframe,text="Otworz plik do szyfrowania ", command=openfile).grid(column=1,row=3,sticky=W)
 
-ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
-ttk.Label(mainframe, text="is equivalent to").grid(column=1,row=2,sticky=E)
-ttk.Label(mainframe, text="wynik").grid(column=3,row=2,sticky=W)
+ttk.Label(mainframe, text="feet").grid(column=4, row=1, sticky=W)
+ttk.Label(mainframe, text="KLUCZ JAWNY N,D ").grid(column=1,row=2,sticky=E)
+ttk.Label(mainframe, text="wygeneruj klucz").grid(column=4,row=2,sticky=W)
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5,pady=5)

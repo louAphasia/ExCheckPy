@@ -1,6 +1,6 @@
 import unittest
 
-from czas import Czas,InvalidTimeException
+from ExCheckPy.__PyWSB.WSB_class.CzasChyla import Czas,InvalidTimeException
 
 class TestTime(unittest.TestCase):
 
