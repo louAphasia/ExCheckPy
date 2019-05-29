@@ -43,6 +43,11 @@ elementy=[x for x in elementy if x!='del']
 print(elementy)
 
 
+while True:
+    print('ok')
+    if 2>1:
+       False
+
 
 
 

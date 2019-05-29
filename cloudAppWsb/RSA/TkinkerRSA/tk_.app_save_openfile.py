@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
+import tkinter as tk
 
 
 # funkcje
@@ -65,13 +66,15 @@ ttk.Label(mainframe,textvariable=meters).grid(column=2,row=2,sticky=(W,E))
 
 ttk.Button(mainframe,text="Dodaj",command=calculate).grid(column=3,row=1,sticky=W)
 
-ttk.Button(mainframe,text="Szyfruj",command=calculate).grid(column=3,row=3,sticky=W)
+tk.Button(mainframe,text="Szyfruj",command=calculate, relief="raised").grid(column=3,row=3,sticky=W)
 ttk.Button(mainframe,text="Zapisz do pliku zaszyfrowane", command=save).grid(column=2,row=3,sticky=W)
 ttk.Button(mainframe,text="Otworz plik do szyfrowania ", command=openfile).grid(column=1,row=3,sticky=W)
 
 ttk.Label(mainframe, text="feet").grid(column=4, row=1, sticky=W)
 ttk.Label(mainframe, text="KLUCZ JAWNY N,D ").grid(column=1,row=2,sticky=E)
 ttk.Label(mainframe, text="wygeneruj klucz").grid(column=4,row=2,sticky=W)
+
+tk.Button(mainframe,text="LOL",relief="raised").grid(column=4,row=4)
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5,pady=5)

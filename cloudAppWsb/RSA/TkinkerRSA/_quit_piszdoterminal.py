@@ -1,5 +1,7 @@
 import tkinter as tk
 
+
+
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -13,7 +15,7 @@ class Application(tk.Frame):
         self.hi_there["command"] = self.say_hi
         self.hi_there.pack(side="top")
 
-        self.quit = tk.Button(self, text="QUIT", fg="red",
+        self.quit = tk.Button(self, text="QUIT", fg="red", relief='raised',
                               command=self.master.destroy)
         self.quit.pack(side="bottom")
 
