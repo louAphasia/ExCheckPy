@@ -1,6 +1,6 @@
 class Czas:
 
-    def __init__(self, hour_or_descr, minutes=None):
+    def __init__(self, hour_or_descr, minutes=None): # args* moze tez byc
         if minutes is None:
             as_list = hour_or_descr.split()
             self._godz = int(as_list[0])
@@ -9,11 +9,11 @@ class Czas:
             self._godz = hour_or_descr
             self._minuty = minutes
 
-        if self._godz > 0 and self._minuty < 0:
-            raise InvalidTimeException("Hour is positive and minutes are negative")
+        if self._godz < 0 and self._minuty < 0:
+            raise InvalidTimeException("Hour is negative {} and minutes are negative {}".format(self._godz,self._minuty))
 
     def to_string(self):
-        return "{} godz {} min".format(self._godz, self._minuty)
+        return "{} h {} min".format(self._godz, self._minuty)
 
     def add(self, oth):
         h = self._godz + oth._godz + int((self._minuty + oth._minuty) / 60)
@@ -33,6 +33,6 @@ class Czas:
         return Czas(h, m)
 
 
-class InvalidTimeException(Exception):
-    def __init__(self, msg):
+class InvalidTimeException(ValueError):
+    def __init__(self, msg):   #msg napis opisujacy co sie stalo
         super().__init__(msg)
