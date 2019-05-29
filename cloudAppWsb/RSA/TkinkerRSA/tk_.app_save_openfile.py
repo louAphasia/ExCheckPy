@@ -52,29 +52,40 @@ mainframe.grid(column=0,row=0,sticky=(N,W,E,S))
 mainframe.columnconfigure(0,weight=1)
 mainframe.rowconfigure(0,weight=1)
 
+
 #feet do funkcji
 feet=StringVar()
 meters=StringVar()
+feet1=StringVar()
+pesel=IntVar()
 
 # FEET ENTRY
-ttk.Label(mainframe,text='wpisz dane').grid(column=1,row=1,sticky=(W,E))
-feeten=ttk.Entry(mainframe, textvariable=feet)
-feeten.grid(column=2,row=1,sticky=(N,S))
+label_surname=ttk.Label(mainframe,text='NAZWISKO').grid(column=1,row=1,sticky=(W,E))
+feeten1=ttk.Entry(mainframe, textvariable=feet)
+feeten1.grid(column=2,row=1,sticky=(N,S),columnspan=2)
 
+label_name=ttk.Label(mainframe,text='IMIE').grid(column=1,row=2,sticky=(W,E))
+feeten2=ttk.Entry(mainframe, textvariable=feet1)
+feeten2.grid(column=2,row=2,sticky=(N,S),columnspan=2)
+
+label_pesel=ttk.Label(mainframe,text='PESEL').grid(column=1,row=3,sticky=(W,E))
+feeten3=ttk.Entry(mainframe, textvariable=pesel)
+feeten3.grid(column=2,row=3,sticky=(N,S),columnspan=2)
 # LABEL  Button w MAINFRAME
-ttk.Label(mainframe,textvariable=meters).grid(column=2,row=2,sticky=(W,E))
 
-ttk.Button(mainframe,text="Dodaj",command=calculate).grid(column=3,row=1,sticky=W)
+label_rekordy=ttk.Label(mainframe,text="liczba wpisanych Rekordów").grid(column=4,row=1,sticky=(W,E))
+label_rekordyCount=ttk.Label(mainframe,textvariable=meters).grid(column=4,row=2,sticky=(W,E))
 
-tk.Button(mainframe,text="Szyfruj",command=calculate, relief="raised").grid(column=3,row=3,sticky=W)
-ttk.Button(mainframe,text="Zapisz do pliku zaszyfrowane", command=save).grid(column=2,row=3,sticky=W)
-ttk.Button(mainframe,text="Otworz plik do szyfrowania ", command=openfile).grid(column=1,row=3,sticky=W)
+ttk.Button(mainframe,text="Dodaj",command=calculate).grid(column=2,row=4,sticky=W)
 
-ttk.Label(mainframe, text="feet").grid(column=4, row=1, sticky=W)
-ttk.Label(mainframe, text="KLUCZ JAWNY N,D ").grid(column=1,row=2,sticky=E)
-ttk.Label(mainframe, text="wygeneruj klucz").grid(column=4,row=2,sticky=W)
+ttk.Button(mainframe,text="Szyfruj i przeslij",command=calculate).grid(column=3,row=4,sticky=W)
 
-tk.Button(mainframe,text="LOL",relief="raised").grid(column=4,row=4)
+
+
+
+
+
+tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised").grid(column=4,row=4)
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5,pady=5)
