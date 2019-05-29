@@ -87,7 +87,7 @@ finally:
  #if x in string:
 #   raise ValueError(x+' ')
 
- class EmptyString(ValueError):
+class EmptyString(ValueError):
      def __init__(self):
          super().__init__('String is empty')
 

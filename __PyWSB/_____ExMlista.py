@@ -1,6 +1,14 @@
 lista=[2,3,4,5,5,7,2]
 
 print(len(lista))
+y=0
+x=4
+try:
+    z=x/y
+except Exception as e:
+    print("ok" ,e)
+
+print("lol ", (x+y))
 
 e=2
 if e not in lista:
@@ -28,8 +36,39 @@ def usun(listaa,x):
             if x!='del':
                 newlist.append(x)
     return newlist
+==================================
+def main():
+    while True:
+        capacity=int(input( " Podaj początkowy rozmiar listy " ))
+        lista = MLista(capacity)
+        if capacity>=0:
+            break
 
+        #else:
+            #print("Pojemnosc listy musi byc >=0")
 
+    #lista=MLista(capacity)
+
+class InvalidCapacity(ValueError):
+    def __init__(self, msg):   #msg napis opisujacy co sie stalo
+        super().__init__(msg)
+        
+         def __init__(self, capacity):
+            self.capacity = capacity
+            self.elementy = []
+            if capacity < 0 :
+                raise InvalidCapacity("Capacity is negative {} ".format(self.capacity))
+===============================
+2 rozw 
+def main():
+    while True:
+        capacity=int(input( " Podaj początkowy rozmiar listy " ))
+        lista = MLista(capacity)
+        if capacity>=0:
+            break
+        else:
+            print("Pojemnosc listy musi byc >=0")
+            =====================================
 print(usun(listaa,x))'''
 
 x=2
@@ -43,10 +82,7 @@ elementy=[x for x in elementy if x!='del']
 print(elementy)
 
 
-while True:
-    print('ok')
-    if 2>1:
-       False
+
 
 
 
