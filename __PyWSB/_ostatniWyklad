@@ -1,0 +1,77 @@
+a=7
+b=a
+b nadal wskazuje na 7
+a=a+1  wskazuje na 8 tworzy nowe powiazanie nie juz do 7 ALE TEZ nowy obiekt 8
+w przypadku liczb wskazuje nowy obiekt za kazdym razem i zmienione powiazanie/referencja
+
+c=[] wskazuje na obiekt ktory jest lista
+c.append(5)
+
+d=c d wskazuje na [5] c
+d.append(6)
+trzeba skopiowac nowa tablice ze starej
+e=[]
+for i in d:
+    e.append[i]
+
+e= [5,6]
+e.append(8)
+e [5,6,8]
+a d [5,6] nadal
+
+d  to>> [5,6]
+c to>> [5,6]
+
+for i in range(10):
+    print(i)
+>>>0....9 ISTNIEJA nie ma wskazania tez nie zostana usuniete
+CPython skor for czesto obiekty od 0-200 to raz tworzymy i zapisujemy domyslnie
+
+    za kazdym nowe obiekty sie tworza nowe obiekty kosztowne
+
+bez referencji powiazania garbage collector usuniecie w dogodnym momencie
+interpreter cpython ten 8 nie usunie nigdy CZEMU? WYZEJ
+OSZCZEDZANIE PAMIECI
+naprawde c=[5,6] nie ma bo 5 i 6 istnieje TYLKO jest informacje ze 5 i 6 w pamieci istnieje i wskazanie w liscie c
+========================================
+ def f(p):
+    p.append(99)
+    return p
+
+  e=f(d)
+  d powiazal i stworzyl 99 i stworzyl powiazanie  powiazal z e z ta sama stara lista w Pythonie
+  ===================
+  EGZAMIN a=[1,2,3,4,5]
+  b=a
+  a.append(6)
+  co bedzie pod a a co pod b?
+  a i b [1,2,3,4,5,6]
+  ========
+  def f():
+    print('czesc')
+
+   f()   na podst tworzy obiekt   tworzy nazwe f i powiaze z ta funkcja
+   czesc
+   g= f nie zglosi bledu
+   f i g wskazuja na funkcje f
+
+   przez klase tworzymy wlasny typ obiektu
+
+   dir() wypisuje wszystkie nazyw zwiazane z danym obietem wszystkie nazyw globalne
+   a dir(f) wszystkie funckje default __str__ __repr__ code init itd.
+   f.ala='ala ma kota'
+   >>> nic nei ma ale nie wyrzuca bledu
+   a f.ala jeszcze raz
+   >>> "ala ma kota "
+=====================================
+EGZAMIN
+ def f():
+     print("hello")
+
+    g=f
+    co sie wydrukuje ?
+    g()
+    Hello
+
+netbatchelder strona\
+

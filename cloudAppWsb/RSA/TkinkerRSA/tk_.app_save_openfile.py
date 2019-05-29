@@ -5,7 +5,7 @@ from tkinter import messagebox
 import tkinter as tk
 
 
-# funkcje
+# funkcje £ szyfrujaca i druga zapisujaca do pliku
 def calculate(*args):
     try:
         value=float(feet.get())
