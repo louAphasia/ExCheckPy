@@ -69,6 +69,12 @@ def main():
         else:
             print("Pojemnosc listy musi byc >=0")
             =====================================
+            
+                def pisz(self):
+        print("Rozmiar aktualny listy:", MLista.rozmiar(self))  # self.elementy.rozmiar(self) MLista.rozmiar(self)
+        print("Pojemnosc listy : ", self.capacity)
+        print("Elementy: ", self.elementy)
+            
 print(usun(listaa,x))'''
 
 x=2
