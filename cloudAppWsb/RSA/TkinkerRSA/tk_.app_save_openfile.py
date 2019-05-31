@@ -6,13 +6,11 @@ import tkinter as tk
 
 
 # funkcje £ szyfrujaca i druga zapisujaca do pliku
-def calculate(*args):
-    try:
-        value.set(accounts)
-    except ValueError:
-        pass
+def countRekords():
+    return value.set(accounts)
 
-#def save as
+
+'''#def save as
 def saveasfile():
     savea=filedialog.asksaveasfile(mode='w', defaultextension='.txt')
 
@@ -28,13 +26,17 @@ def openfile():
     filename="wpis"
     filename=filedialog.askopenfilename(initialdir="/",title="Open file",filetypes=(("Text files", "*.txt"),("All Files", "*.*")))
 
+'''
+def rekordy():
 
-def database():
-    with open("wpis.txt", "r") as f:
-        return f.read()
+    with open("wpis.txt") as f:
+         lines=list(f)
+         c=len(lines)
+
+    return c
 
 
-accounts = database()
+accounts = rekordy()
 '''
 def confirm():
     u, p = usernameB.get(), passwordB.get()
@@ -56,10 +58,10 @@ def save():
 
         data2=feeten2.get()
         data3=feeten3.get()
-        savet=open(filename,'a')
-        savet.write(data1)   # musi pionowo z przerwa
-        savet.write(data2)
-        savet.write(data3)
+        savet=open(filename,'a+')
+        savet.write(data1+' ')
+        savet.write(data2+' ')
+        savet.write(data3+'\n')
         savet.close()
     else:
         messagebox.showinfo("Error", "no file open")
@@ -77,9 +79,10 @@ mainframe.rowconfigure(0,weight=1)
 
 #feet do funkcji
 surname=StringVar()
-value=StringVar()
 name=StringVar()
 pesel=IntVar()
+
+value=IntVar()
 
 # FEET ENTRY
 label_surname=ttk.Label(mainframe,text='NAZWISKO').grid(column=1,row=1,sticky=(W,E))
@@ -100,15 +103,15 @@ label_rekordyCount=ttk.Label(mainframe,width=50,textvariable=value).grid(column=
 
 ttk.Button(mainframe,text="Dodaj",command=save).grid(column=2,row=4,sticky=W)
 
-ttk.Button(mainframe,text="Szyfruj i przeslij",command=database).grid(column=3,row=4,sticky=W)
+ttk.Button(mainframe,text="Szyfruj i przeslij",command=rekordy).grid(column=3,row=4,sticky=W)
 
-tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised",command=calculate).grid(column=4,row=4)
+tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised",command=countRekords).grid(column=4,row=4)
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5,pady=5)
 
 #feeten.focus()  nie wiem co to robi
-root.bind('<Return>',calculate)
+#root.bind('<Return>',calculate)
 
 #label=Label(root, text='Szyfrowania RSA')
 #label.pack()
