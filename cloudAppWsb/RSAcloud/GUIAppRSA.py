@@ -1,76 +1,86 @@
 from tkinter import *
 from tkinter import ttk
-from tkinter import filedialog
+from ExCheckPy.cloudAppWsb.RSAcloud.szyfrowanieTekstu import *
+from ExCheckPy.cloudAppWsb.RSA.encryptASCIIdecrypt import *
 from tkinter import messagebox
 import tkinter as tk
 
 
-# funkcje £ szyfrujaca i druga zapisujaca do pliku
-def countRekords():
-    return value.set(accounts)
+# funkcje £ szyfrujaca i  zapisujaca do pliku
+def szyfruj():
+
+    filename='encrypted_file.txt' # nadanie nazwy pliku w którym będzie zapisany zaszyfrowany tekst
+    filename2='decrypted_file.txt'
+    mode='encrypt'  # moze byc 'decrypt'  WYBIERAMY TRYB
+
+    # otwieramy tekst do szyfrowania
+
+    if mode == 'encrypt':
+        with open(r'rekordy.txt', 'r', encoding='utf-8') as r:
+            message= r.read()
+            print(message)
+        # generujemy klucze publiczne i prywatne pobieramy klucz pod indeksem [0] a prywatny pod [1]
+        pubiprivKey= genKeys()
+        print(pubiprivKey)
+        publKey=pubiprivKey[0]
+        privKey=pubiprivKey[1]
+
+        makeKeyFiles('klucz',pubiprivKey)
 
 
-'''#def save as
-def saveasfile():
-    savea=filedialog.asksaveasfile(mode='w', defaultextension='.txt')
 
-    if savea:
-        texttosave=feeten2.get()
-        savea.write(texttosave)
-        savea.close()
-    else:
-        messagebox.showinfo("Error","cancelled")
+        x=TextIndexDec(message)
+        print('ords',x)
+        e= encrypted(x,publKey)
+        print('encrypted',e)
+        dch=DecCharASCII(e)
+        print(dch)
+        WriteToFile(filename,dch)
 
-# otwiera plik ale z dysku jako open as
-def openfile():
-    filename="wpis"
-    filename=filedialog.askopenfilename(initialdir="/",title="Open file",filetypes=(("Text files", "*.txt"),("All Files", "*.*")))
+    #if mode == 'decrypt':
 
-'''
-def rekordy():
+        m = readFileKey('klucz_privkey.txt')
+        print(m)
+        re=ReadFromFile(filename)
+        print(re)
+        o=ChrnaOrds(re)
+        print("ords",o)
+        de=decrypted(o,m)
+        print("decrypted",de)
+        dee=DecCharASCII(de)
+        print(dee)
+
+
+
+# 2 funkcje zliczajace rekordy WPISANE
+def rekords():
     c = -1
-    for c, wiersz in enumerate(open('wpis.txt', 'r')):
+    for c, wiersz in enumerate(open('rekordy.txt', 'r')):
         pass
     c += 1
-
-
-
-    '''''with open("wpis.txt") as f:
-         lines=list(f)
-         c=len(lines)'''''
-
     return c
 
+def countRekords():
+    account=rekords()
+    return value.set(account)
 
-accounts = rekordy()
-'''
-def confirm():
-    u, p = usernameB.get(), passwordB.get()
-    if accounts.get(u) == p:
-        print(True)
-        # do whatever here
-    else:
-        print(False)
-        #  login is bad
-        m  = messagebox.askretrycancel("Invalid input")
-        if not m:
-             master.quit()'''
 
-#### funkcja save do pliku
+#### funkcja save do pliku WPISYWANE REKORDY
 def save():
-    filename='wpis.txt'
+    filename='rekordy.txt'
     if filename:
         data1=feeten1.get()
 
         data2=feeten2.get()
         data3=feeten3.get()
-        savet=open(filename,'a+')
+        savet=open(filename,'a')
         savet.write(data1+' ')
         savet.write(data2+' ')
         savet.write(data3+'\n')
         savet.close()
     else:
         messagebox.showinfo("Error", "no file open")
+
 # tkinker MAIN
 
 root=Tk()
@@ -109,7 +119,7 @@ label_rekordyCount=ttk.Label(mainframe,width=50,textvariable=value).grid(column=
 
 ttk.Button(mainframe,text="Dodaj",command=save).grid(column=2,row=4,sticky=W)
 
-ttk.Button(mainframe,text="Szyfruj i przeslij",command=rekordy).grid(column=3,row=4,sticky=W)
+ttk.Button(mainframe,text="Szyfruj i przeslij",command=szyfruj).grid(column=3,row=4,sticky=W)
 
 tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised",command=countRekords).grid(column=4,row=4)
 

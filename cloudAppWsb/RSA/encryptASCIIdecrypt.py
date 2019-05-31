@@ -14,7 +14,7 @@ def main():
     # otwieramy tekst do szyfrowania
 
     if mode == 'encrypt':
-        with open(r'tekst.txt', 'r', encoding='utf-8') as r:
+        with open(r'rekordy.txt', 'r', encoding='utf-8') as r:
             message= r.read()
             print(message)
         # generujemy klucze publiczne i prywatne pobieramy klucz pod indeksem [0] a prywatny pod [1]
