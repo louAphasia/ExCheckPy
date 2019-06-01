@@ -65,6 +65,11 @@ def countRekords():
     return value.set(account)
 
 
+def close_window ():
+    root.destroy()
+
+
+
 #### funkcja save do pliku WPISYWANE REKORDY
 def save():
     filename='rekordy.txt'
@@ -121,7 +126,10 @@ ttk.Button(mainframe,text="Dodaj",command=save).grid(column=2,row=4,sticky=W)
 
 ttk.Button(mainframe,text="Szyfruj i przeslij",command=szyfruj).grid(column=3,row=4,sticky=W)
 
-tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised",command=countRekords).grid(column=4,row=4)
+tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised",command=countRekords).grid(column=4,row=3)
+
+
+ttk.Button (mainframe, text = "Zamknij", command = close_window).grid(column=4, row=4)
 
 for child in mainframe.winfo_children():
     child.grid_configure(padx=5,pady=5)
