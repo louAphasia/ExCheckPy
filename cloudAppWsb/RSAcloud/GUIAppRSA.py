@@ -83,13 +83,26 @@ def save():
         savet.write(data2+' ')
         savet.write(data3+'\n')
         savet.close()
+        feeten1.delete(0, 'end')
+        feeten2.delete(0, 'end')
+        feeten3.delete(0, 'end')
     else:
         messagebox.showinfo("Error", "no file open")
-
+#======================================================================================================================
 # tkinker MAIN
 
 root=Tk()
-root.title("Szyfrowanie RSA")
+root.title("SZYFROWANIE RSA")
+
+root.geometry('530x170')
+root.configure(bg='#334353')
+
+gui_style = ttk.Style()
+
+gui_style.configure('My.TFrame', background='#334353')
+
+frame = ttk.Frame(root, style='My.TFrame')
+frame.grid(column=1, row=1)
 
 #MAINFRAME
 
@@ -97,6 +110,7 @@ mainframe=ttk.Frame(root,padding="10 10 12 12")
 mainframe.grid(column=0,row=0,sticky=(N,W,E,S))
 mainframe.columnconfigure(0,weight=1)
 mainframe.rowconfigure(0,weight=1)
+
 
 #feet do funkcji
 surname=StringVar()
@@ -119,14 +133,14 @@ feeten3=ttk.Entry(mainframe,width=40, textvariable=pesel)
 feeten3.grid(column=2,row=3,sticky=(N,S),columnspan=2)
 # LABEL  Button w MAINFRAME
 
-label_rekordy=ttk.Label(mainframe,text="liczba wpisanych Rekordów").grid(column=4,row=1,sticky=(W,E))
-label_rekordyCount=ttk.Label(mainframe,width=50,textvariable=value).grid(column=4,row=2,sticky=(W,E))
+label_rekordy=ttk.Label(mainframe,text="LICZBA wpisanych Rekordów",foreground='#334353').grid(column=4,row=1,sticky=(N,S))
+label_rekordyCount=ttk.Label(mainframe,textvariable=value,foreground='#334353').grid(column=4,row=2,sticky=(N,S))
 
 ttk.Button(mainframe,text="Dodaj",command=save).grid(column=2,row=4,sticky=W)
 
 ttk.Button(mainframe,text="Szyfruj i przeslij",command=szyfruj).grid(column=3,row=4,sticky=W)
 
-tk.Button(mainframe,text="pokaż ilosc rekordow",relief="raised",command=countRekords).grid(column=4,row=3)
+tk.Button(mainframe,text="SHOW ilosc rekordow",relief="raised",command=countRekords,foreground='white',bg='#334353').grid(column=4,row=3)
 
 
 ttk.Button (mainframe, text = "Zamknij", command = close_window).grid(column=4, row=4)
