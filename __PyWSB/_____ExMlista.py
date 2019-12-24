@@ -1,3 +1,31 @@
+a=[1,2,3,4,5]
+b=a
+a.append(6)
+
+print('a',a)
+print('b',b)
+
+def f():
+    print("hello")
+
+
+g=f
+g()
+print('g',g())
+print('g bez', g)
+
+
+def listaa(n):
+    i=0
+    nr=[]
+    while i<n:
+        nr.append(i)
+        i=i+1
+    return nr
+
+for x in listaa(5):
+    print('e',x)
+
 lista=[2,3,4,5,5,7,2]
 
 print(len(lista))
