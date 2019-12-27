@@ -6,7 +6,7 @@ class RaitingCount(MRJob):
         if rating == "rating":
             yield
         result = [rating, 1]
-        yield result;
+        yield result
 
     def reducer(self, key, value):
         result = [key,float(key) * sum(float*value)/ sum(value)]
